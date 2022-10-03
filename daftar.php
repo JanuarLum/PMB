@@ -17,33 +17,55 @@
 <a href="index.php" class="button mt-3 mb-3">Kembali</a>
   <h3>Pendaftaran</h3>
     <tbody>
-        <form action="simpan-data.php" method="POST">
+        <form action="identitas.php" method="post">
             <div class="mb-3 mt-3">
                 <label for="nama_lengkap" class="form-label">Nama Lengkap:</label>
-                <input type="nama_lengkap" class="form-control" id="nama_lengkap" placeholder="Input Nama" name="nama_lengkap">
+                <input type="text" class="form-control" id="nama_lengkap" placeholder="Input Nama" name="nama_lengkap" />
+
                 <label for="HP" class="form-label">No. HP:</label>
-                <input type="HP" class="form-control" id="HP" placeholder="Input HP" name="HP">
+                <input type="text" class="form-control" id="HP" placeholder="Input No. HP" name="HP" />
+                
                 <label for="tanggal_lahir">Tanggal Lahir:</label>
-                <input type="date" id="tanggal_lahir" name="tanggal_lahir"><br>
+                <input type="date" id="tanggal_lahir" name="tanggal_lahir" /><br>
+                
                 <label for="kewarganegaraan" class="form-label">Kewarganegaraan:</label>
                 <select name="kewarganegaraan">
                     <option>Indonesia</option>
                     <option>Amerika</option>
                 </select><br>
+                
                 <label for="kelamin" class="form-label">Jenis Kelamin : </label>
-                <input type="radio" name="kelamin" value="laki-laki"> Laki-laki
-                <input type="radio" name="kelamin" values="perempuan"> Perempuan <br>
+                <input type="radio" name="kelamin" value="laki-laki" /> Laki-laki
+                <input type="radio" name="kelamin" value="perempuan" /> Perempuan <br>
+                
                 <label for="email" class="form-label">Email:</label>
-                <input type="email" class="form-control" id="email" placeholder="Input Email" name="email">
+                <input type="text" class="form-control" id="email" placeholder="Input Email" name="email" />
+                
                 <label for="tempat_lahir" class="form-label">Tempat Lahir:</label>
-                <input type="temapt_lahir" class="form-control" id="tempat_lahir" placeholder="Input Tempat Lahir" name="tempat_lahir">
+                <input type="text" class="form-control" id="tempat_lahir" placeholder="Input Tempat Lahir" name="tempat_lahir" />
+                
                 <label for="no_ktp" class="form-label">NIK/No. KTP:</label>
-                <input type="no_ktp" class="form-control" id="no_ktp" placeholder="Input NIK/No. KTP" name="no_ktp">
+                <input type="text" class="form-control" id="no_ktp" placeholder="Input NIK/No. KTP" name="no_ktp" />
             </div>
-            <input type="submit" value="Simpan" name="proses">
+            <input type="submit" value="Simpan" name="proses" href="index.php">
         </form>
     </tbody>
 </div>
-
+<?php
+    include "koneksi.php";
+    
+    if(isset($_POST['proses'])) {
+        $nama_lengkap = $_POST['nama_lengkap'];
+        $no_hp = $_POST['HP'];
+        $tanggal_lahir = $_POST['tanggal_lahir'];
+        $kewarganegaraan = $_POST['kewarganegaraan'];
+        $kelamin = $_POST['kelamin'];
+        $email = $_POST['email'];
+        $tempat_lahir = $_POST['tempat_lahir'];
+        $no_ktp = $_POST['no_ktp'];
+        $querySQL = "INSERT INTO pendaftaran (nama_lengkap, no_hp, tanggal_lahir, kewarganegaraan, kelamin, email, tempat_lahir, no_ktp) VALUES ('$nama_lengkap', $no_hp, '$tanggal_lahir', '$kewarganegaraan', '$kelamin', '$email', '$tempat_lahir', $no_ktp)";
+        $execSQL = mysqli_query($koneksi,$querySQL);
+    }    
+?>
 </body>
 </html>
