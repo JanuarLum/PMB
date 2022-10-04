@@ -7,15 +7,38 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="style.css" rel="stylesheet">
   <link href="navbar.css" rel="stylesheet">
+  <link href="button.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    .container-fluid {
+      background-image: url(https://cms.sevima.com//uploads/bgaplikasi/864.jpg);
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      width: 100%; 
+      height: 100%;
+    }
+    .container-fluid h2{
+      background-color: RGBA(255, 255, 255, 0.3);
+      backdrop-filter: blur(12px);
+      color: #251B37;
+      border-style: ridge;
+    }
+  </style>
 </head>
 <body> 
 <?php 
     require_once "menu.php";
 ?>
-<div class="container-fluid mt-3">
-  <h3>Navbar With Dropdown</h3>
-  <p>This example adds a dropdown menu in the navbar.</p>
+<div class="container-fluid">
+  <div class="container-flex p-5">
+    <span class="p-5"></span>
+    <h2 class="text-center p-2">Penerimaan Mahasiswa Baru</h2>
+    <a href="daftar.php">
+      <button class="button-35 mt-5" role="button">Daftar Sekarang</button>
+    </a>
+  </div>
 </div> 
 <?php 
     require_once "home.php";
